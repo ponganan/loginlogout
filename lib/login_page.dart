@@ -53,8 +53,11 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const Text(
                   // 'Welcome back, you\'ve been missed!!',
-                  'Welcome To JJ Delivery',
-                  style: TextStyle(fontSize: 20),
+                  'Welcome To JJ Food Delivery',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(
                   height: 50,
