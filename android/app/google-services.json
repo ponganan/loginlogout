@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "156277531859",
+    "project_id": "loginlogout-ba688",
+    "storage_bucket": "loginlogout-ba688.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156277531859:android:5bb09f189aa95d1ca42026",
+        "android_client_info": {
+          "package_name": "com.ponganan.loginlogout.loginlogout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156277531859-6va9lvg2gser44slkbo8950hj183485m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs0O0lHbkEGdu-goeH78Z4yZOiv3OQveM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156277531859-6va9lvg2gser44slkbo8950hj183485m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
