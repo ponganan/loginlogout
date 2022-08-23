@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: const Text('Add User'),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 28),
             Text(
               'Signed In as : ' + user.email!,
               style: const TextStyle(fontSize: 20),
