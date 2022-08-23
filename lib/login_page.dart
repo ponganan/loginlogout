@@ -38,19 +38,17 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.fastfood,
                   size: 150,
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 //Hello
                 Text(
                   'Hello',
                   style: GoogleFonts.bebasNeue(fontSize: 56),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 const Text(
                   // 'Welcome back, you\'ve been missed!!',
                   'Welcome To JJ Food Delivery',
@@ -59,9 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                const SizedBox(height: 50),
                 //email
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -74,10 +70,10 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20.0),
+                      padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: _emailController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: ('Email'),
                         ),
@@ -85,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 //password
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -103,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _passwordController,
                         //obscureText for don't show password text
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: ('Password'),
                         ),
@@ -111,19 +107,19 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 //sign in
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
                     onTap: signIn,
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         color: Colors.deepPurpleAccent,
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Sign in',
                           style: TextStyle(
@@ -136,19 +132,19 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 //register
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
-                      'Not a Member? ',
+                      'เป็นสมาชิก ?? ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'Register Now...',
+                      ' Register Now...',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
