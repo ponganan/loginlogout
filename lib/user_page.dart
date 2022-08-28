@@ -13,6 +13,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+  //final user = FirebaseAuth.instance.currentUser!;
+
   final controllerName = TextEditingController();
   final controllerAge = TextEditingController();
   final controllerDate = TextEditingController();

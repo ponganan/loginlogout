@@ -1,9 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'main.dart';
+
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback onClickedSignUp;
+
+  const LoginPage({
+    Key? key,
+    required this.onClickedSignUp,
+  }) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -12,13 +20,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-  }
 
   //release memories
   @override
@@ -119,44 +120,82 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.deepPurpleAccent,
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: const Center(
-                        child: Text(
-                          'Sign in',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.lock_open,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              'Sign In',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ]),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 //register
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'เป็นสมาชิก ?? ',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      ' Register Now...',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
+                RichText(
+                  text: TextSpan(
+                      text: ('No Account ?  '),
+                      style: TextStyle(color: Colors.white),
+                      children: [
+                        TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = widget.onClickedSignUp,
+                          text: ('Sign Up'),
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.secondary),
+                        ),
+                      ]),
                 ),
+                const SizedBox(height: 10),
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: Colors.purple.shade300,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                    text: ('App by Ponganan'),
+                  ),
+                )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Future signIn() async {
+    showDialog(
+      context: context,
+      builder: (context) => Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+
+    //Navigator.of(context) not working
+    // go to main_page.dart
+    // add final navigatorKey = GlobalKey<NavigatorState>();  variable
+    // and add navigatorKey: navigatorKey in MaterialApp
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

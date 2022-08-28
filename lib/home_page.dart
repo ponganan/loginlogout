@@ -11,8 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //************ for get AUTH USER information *****************
   //add this variable to get user information from firebase
   final user = FirebaseAuth.instance.currentUser!;
+  //************ for get AUTH USER information *****************
 
   //this line add from Johannes Milke Youtube Channel
   //for get Text value
