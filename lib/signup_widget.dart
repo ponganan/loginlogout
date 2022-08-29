@@ -23,12 +23,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   final formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _cfPasswordController = TextEditingController();
 
   //release memories
+  // Clean up the controller when the widget is disposed.
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _cfPasswordController.dispose();
     super.dispose();
   }
 
@@ -123,6 +126,41 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       ),
                     ),
                   ),
+
+                  const SizedBox(height: 10),
+                  // confirm password
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        border: Border.all(
+                          color: Colors.white,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: TextFormField(
+                          controller: _cfPasswordController,
+                          //obscureText for don't show password text
+                          obscureText: true,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) => value != null &&
+                                  //get TextFormField value by _passwordController.text
+                                  !(_passwordController.text ==
+                                      _cfPasswordController.text)
+                              ? 'Please Enter Same Password'
+                              : null,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: ('Confirm Password'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 10),
                   //sign in
                   Padding(
@@ -157,15 +195,19 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   RichText(
                     text: TextSpan(
                         text: ('Ready Have Account ?  '),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
                         children: [
                           TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = widget.onClickedSignIn,
-                            text: ('Log In'),
+                            text: ('Sign In'),
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.bold,
+                                fontSize: 15,
                                 color: Theme.of(context).colorScheme.secondary),
                           ),
                         ]),

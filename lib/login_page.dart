@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loginlogout/utils.dart';
 
+import 'forgot_password_page.dart';
 import 'main.dart';
 
 class LoginPage extends StatefulWidget {
@@ -140,11 +142,34 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
+
+                //forgot password
+                GestureDetector(
+                  child: RichText(
+                    text: TextSpan(
+                      text: ('Forgot Password'),
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Theme.of(context).colorScheme.secondary),
+                    ),
+                  ),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ForgotPasswordPage(),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
                 //register
                 RichText(
                   text: TextSpan(
                       text: ('No Account ?  '),
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
                       children: [
                         TextSpan(
                           recognizer: TapGestureRecognizer()
@@ -153,6 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               fontWeight: FontWeight.bold,
+                              fontSize: 15,
                               color: Theme.of(context).colorScheme.secondary),
                         ),
                       ]),
@@ -190,6 +216,13 @@ class _LoginPageState extends State<LoginPage> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+
+      if (Utils.showSnackBar(e.message).toString() ==
+          'Given String is empty or null') {
+        Utils.showSnackBar('กรุณากรอก Email และ Password');
+      } else {
+        //Utils.showSnackBar(e.message);
+      }
     }
 
     //Navigator.of(context) not working
