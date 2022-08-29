@@ -147,12 +147,16 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           //obscureText for don't show password text
                           obscureText: true,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => value != null &&
-                                  //get TextFormField value by _passwordController.text
-                                  !(_passwordController.text ==
-                                      _cfPasswordController.text)
-                              ? 'Please Enter Same Password'
-                              : null,
+                          // confirm password with 2 condition
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter min 6 characters';
+                            } else if (_passwordController.text !=
+                                _cfPasswordController.text) {
+                              return 'Password not match';
+                            }
+                            return null;
+                          },
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             hintText: ('Confirm Password'),
@@ -249,7 +253,18 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
-      Utils.showSnackBar(e.message);
+      switch (e.code) {
+        //Custom errors for Thai languages
+        // switch (e.code) {case "xxxx error code xxxxx":}
+        case "email-already-in-use":
+          Utils.showSnackBar('Email นี้ ลงทะเบียนในระบบแล้ว');
+          break;
+        case "wrong-password":
+          Utils.showSnackBar('รหัสผ่านไม่ถูกต้อง');
+          break;
+        default:
+          Utils.showSnackBar(e.message);
+      }
     }
 
     //Navigator.of(context) not working

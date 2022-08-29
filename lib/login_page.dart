@@ -216,13 +216,19 @@ class _LoginPageState extends State<LoginPage> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
-
-      if (Utils.showSnackBar(e.message).toString() ==
-          'Given String is empty or null') {
-        Utils.showSnackBar('กรุณากรอก Email และ Password');
-      } else {
-        //Utils.showSnackBar(e.message);
+      switch (e.code) {
+        //Custom errors for Thai languages
+        // switch (e.code) {case "xxxx error code xxxxx":}
+        case "user-not-found":
+          Utils.showSnackBar('ไม่พบชื่อผู้ใช้');
+          break;
+        case "wrong-password":
+          Utils.showSnackBar('รหัสผ่านไม่ถูกต้อง');
+          break;
+        default:
+          Utils.showSnackBar(e.message);
       }
+      //Utils.showSnackBar(e.message);
     }
 
     //Navigator.of(context) not working
