@@ -13,7 +13,7 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  //final user = FirebaseAuth.instance.currentUser!;
+  final userFirebase = FirebaseAuth.instance.currentUser!;
 
   final controllerName = TextEditingController();
   final controllerAge = TextEditingController();
@@ -59,6 +59,7 @@ class _UserPageState extends State<UserPage> {
           ElevatedButton(
             onPressed: () {
               final userAddUser = UserAddUser(
+                id: userFirebase.uid,
                 //get value from name TextField
                 name: controllerName.text,
                 //get int value to string
@@ -86,7 +87,8 @@ class _UserPageState extends State<UserPage> {
 
   Future createUserAddUser(UserAddUser userAddUser) async {
     final docUser = FirebaseFirestore.instance.collection('users').doc();
-    userAddUser.id = docUser.id;
+    //add id from Firebase Auth id
+    userAddUser.id = userFirebase.uid;
 
     final json = userAddUser.toJson();
     await docUser.set(json);
