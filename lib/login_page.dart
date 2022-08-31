@@ -77,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         controller: _emailController,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.email_outlined),
                           border: InputBorder.none,
                           hintText: ('Email'),
                         ),
@@ -103,6 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                         //obscureText for don't show password text
                         obscureText: true,
                         decoration: const InputDecoration(
+                          icon: Icon(Icons.key_outlined),
                           border: InputBorder.none,
                           hintText: ('Password'),
                         ),
@@ -205,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
   Future signIn() async {
     showDialog(
       context: context,
-      builder: (context) => Center(
+      builder: (context) => const Center(
         child: CircularProgressIndicator(),
       ),
     );

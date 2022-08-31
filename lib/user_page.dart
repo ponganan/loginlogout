@@ -59,7 +59,7 @@ class _UserPageState extends State<UserPage> {
           ElevatedButton(
             onPressed: () {
               final userAddUser = UserAddUser(
-                id: userFirebase.uid,
+                //id: userFirebase.uid,
                 //get value from name TextField
                 name: controllerName.text,
                 //get int value to string
@@ -86,9 +86,11 @@ class _UserPageState extends State<UserPage> {
       );
 
   Future createUserAddUser(UserAddUser userAddUser) async {
-    final docUser = FirebaseFirestore.instance.collection('users').doc();
+    final docUser =
+        FirebaseFirestore.instance.collection('users').doc(userFirebase.uid);
     //add id from Firebase Auth id
-    userAddUser.id = userFirebase.uid;
+    userAddUser.id = docUser.id;
+    //userAddUser.id = userFirebase.uid;
 
     final json = userAddUser.toJson();
     await docUser.set(json);

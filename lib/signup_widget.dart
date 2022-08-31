@@ -88,6 +88,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   ? 'Enter a valid email'
                                   : null,
                           decoration: const InputDecoration(
+                            icon: Icon(Icons.email_outlined),
                             border: InputBorder.none,
                             hintText: ('Email'),
                           ),
@@ -119,6 +120,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   ? 'Enter min 6 characters'
                                   : null,
                           decoration: const InputDecoration(
+                            icon: Icon(Icons.key_outlined),
                             border: InputBorder.none,
                             hintText: ('Password'),
                           ),
@@ -158,6 +160,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                             return null;
                           },
                           decoration: const InputDecoration(
+                            icon: Icon(Icons.key_outlined),
                             border: InputBorder.none,
                             hintText: ('Confirm Password'),
                           ),
