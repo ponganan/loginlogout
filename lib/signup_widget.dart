@@ -245,7 +245,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
     showDialog(
       context: context,
-      builder: (context) => Center(
+      builder: (context) => const Center(
         child: CircularProgressIndicator(),
       ),
     );

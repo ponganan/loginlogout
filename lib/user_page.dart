@@ -59,7 +59,6 @@ class _UserPageState extends State<UserPage> {
           ElevatedButton(
             onPressed: () {
               final userAddUser = UserAddUser(
-                //id: userFirebase.uid,
                 //get value from name TextField
                 name: controllerName.text,
                 //get int value to string

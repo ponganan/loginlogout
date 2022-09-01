@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:loginlogout/listuser_page.dart';
 import 'package:loginlogout/user_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,6 +59,19 @@ class _HomePageState extends State<HomePage> {
                 );
               },
               child: const Text('Add User'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const ListUser();
+                    },
+                  ),
+                );
+              },
+              child: const Text('List User'),
             ),
             const SizedBox(height: 28),
             Text(
