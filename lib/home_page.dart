@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loginlogout/listuser_page.dart';
 import 'package:loginlogout/user_page.dart';
+import 'package:loginlogout/userdetail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -66,12 +67,25 @@ class _HomePageState extends State<HomePage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const ListUser();
+                      return const ListUserPage();
                     },
                   ),
                 );
               },
-              child: const Text('List User'),
+              child: const Text('List All Users'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const UserDetailPage();
+                    },
+                  ),
+                );
+              },
+              child: const Text('Single User List'),
             ),
             const SizedBox(height: 28),
             Text(

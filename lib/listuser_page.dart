@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'model/userlist.dart';
 
-class ListUser extends StatefulWidget {
-  const ListUser({Key? key}) : super(key: key);
+class ListUserPage extends StatefulWidget {
+  const ListUserPage({Key? key}) : super(key: key);
 
   @override
-  State<ListUser> createState() => _ListUserState();
+  State<ListUserPage> createState() => _ListUserPageState();
 }
 
-class _ListUserState extends State<ListUser> {
+class _ListUserPageState extends State<ListUserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
