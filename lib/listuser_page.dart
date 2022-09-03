@@ -25,7 +25,7 @@ class _ListUserPageState extends State<ListUserPage> {
         stream: readUser(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('Something went Wrong! ${snapshot.error}');
+            return Text('Something went Wrong!!! ${snapshot.error}');
           } else if (snapshot.hasData) {
             final user = snapshot.data!;
 
