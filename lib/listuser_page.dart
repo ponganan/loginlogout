@@ -16,6 +16,7 @@ class _ListUserPageState extends State<ListUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('List User'),
       ),
 

@@ -210,7 +210,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = widget.onClickedSignIn,
-                            text: ('Sign In'),
+                            text: ('Login'),
                             style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.bold,
@@ -227,7 +227,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),
-                      text: ('App by Ponganan'),
+                      text: ('App by Ponganan Saensuk'),
                     ),
                   )
                 ],

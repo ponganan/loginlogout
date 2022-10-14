@@ -41,20 +41,29 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.fastfood,
-                  size: 150,
-                ),
+                // const Icon(
+                //   Icons.fastfood,
+                //   size: 150,
+                // ),
                 const SizedBox(height: 30),
                 //Hello
                 Text(
-                  'Hello',
+                  'Login',
                   style: GoogleFonts.bebasNeue(fontSize: 56),
                 ),
                 const SizedBox(height: 10),
                 const Text(
                   // 'Welcome back, you\'ve been missed!!',
-                  'Welcome To JJ Food Delivery',
+                  'Username : mukdahanonline@gmail.com',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  // 'Welcome back, you\'ve been missed!!',
+                  'Password : 123456',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -132,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             SizedBox(width: 10),
                             Text(
-                              'Sign In',
+                              'Login',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -193,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
                     ),
-                    text: ('App by Ponganan'),
+                    text: ('App by Ponganan Saensuk'),
                   ),
                 )
               ],
