@@ -310,7 +310,7 @@ class _CustomerState extends State<Customer> {
                 ),
               ),
             ),
-            Divider(),
+            const Divider(),
           ],
         ),
       );
