@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 2 line if want to work with Datetime
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:intl/intl.dart';
-
-import 'home_page.dart';
+// import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+// import 'package:intl/intl.dart';
+//
+// import 'home_page.dart';
 import 'model/customerlist.dart';
-import 'model/userlist.dart';
+//import 'model/userlist.dart';
 
 class Customer extends StatefulWidget {
   const Customer({Key? key}) : super(key: key);
@@ -98,13 +98,7 @@ class _CustomerState extends State<Customer> {
             const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const HomePage();
-                    },
-                  ),
-                );
+                Navigator.pop(context);
               },
               child: const Text(
                 'Back to HomePage',
@@ -237,13 +231,7 @@ class _CustomerState extends State<Customer> {
 
                                       getUpdateCustomerDetail();
 
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (BuildContext context) {
-                                            return const HomePage();
-                                          },
-                                        ),
-                                      );
+                                      Navigator.pop(context);
                                     },
                                     color: Colors.green[200],
                                     child: const Text(

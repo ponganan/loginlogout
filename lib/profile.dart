@@ -1,30 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loginlogout/home_page.dart';
-import 'package:loginlogout/listuser_page.dart';
-import 'package:loginlogout/user_page.dart';
-import 'package:loginlogout/userdetail_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:loginlogout/providers/auth_view_model.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class Profile extends ConsumerWidget {
+  Profile({Key? key}) : super(key: key);
 
-  @override
-  State<Profile> createState() => _ProfileState();
-}
-
-class _ProfileState extends State<Profile> {
   //************ for get AUTH USER information *****************
-  //add this variable to get user information from firebase
   final user = FirebaseAuth.instance.currentUser!;
 
   //************ for get AUTH USER information *****************
-
-  //this line add from Johannes Milke Youtube Channel
-  //for get Text value
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final model = ref.read(authViewModelProvider);
     return Scaffold(
       // appbar add from Johannes Milke Youtube Channel
       appBar: AppBar(
@@ -51,7 +39,15 @@ class _ProfileState extends State<Profile> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 28),
+            const SizedBox(height: 10),
+            Text(
+              'Data From Firebase',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 18),
             Text(
               'Logged In as : ' + user.email!,
               style: const TextStyle(fontSize: 20),
@@ -61,16 +57,28 @@ class _ProfileState extends State<Profile> {
               ' UID : ' + user.uid,
               style: const TextStyle(fontSize: 20),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 60),
+            Text(
+              'Data From Riverpod',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 18),
+            Text(
+              'Username : ' + model.email,
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 28),
+            Text(
+              ' Password : ' + model.password,
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 45),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const HomePage();
-                    },
-                  ),
-                );
+                Navigator.pop(context);
               },
               child: const Text(
                 'Back to HomePage',

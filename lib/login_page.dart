@@ -1,13 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loginlogout/providers/auth_view_model.dart';
 import 'package:loginlogout/utils.dart';
 
 import 'forgot_password_page.dart';
 import 'main.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   final VoidCallback onClickedSignUp;
 
   const LoginPage({
@@ -16,10 +18,10 @@ class LoginPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -33,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final model = ref.watch(authViewModelProvider);
     return Scaffold(
       backgroundColor: Colors.green[300],
       body: SafeArea(
@@ -85,6 +88,8 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: _emailController,
+                        //change riverpod state
+                        onChanged: (v) => model.email = v,
                         decoration: const InputDecoration(
                           icon: Icon(Icons.email_outlined),
                           border: InputBorder.none,
@@ -112,6 +117,8 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _passwordController,
                         //obscureText for don't show password text
                         obscureText: true,
+                        //change riverpod state
+                        onChanged: (v) => model.password = v,
                         decoration: const InputDecoration(
                           icon: Icon(Icons.key_outlined),
                           border: InputBorder.none,
