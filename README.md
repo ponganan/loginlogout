@@ -5,6 +5,8 @@ A LoginLogout Flutter project.
 
 ![alt text](https://i.postimg.cc/x8zjzrHd/Screenshot-20221020-150701.png)
 ![alt text](https://i.postimg.cc/cJFJqB0d/Screenshot-20221020-150502.png)
+![alt text](https://i.postimg.cc/gJ5kjcx5/Screenshot-20221020-150726.png)
+![alt text](https://i.postimg.cc/sX1g3Gg7/Screenshot-20221020-150557.png)
 
 ## Getting Started
 
