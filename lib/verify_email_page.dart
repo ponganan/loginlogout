@@ -67,41 +67,41 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   @override
   Widget build(BuildContext context) => isEmailVerified
       //after verify will direct to Homepage
-      ? HomePage()
+      ? const HomePage()
       : Scaffold(
           appBar: AppBar(
-            title: Text('Verify Email'),
+            title: const Text('Verify Email'),
           ),
           body: Padding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'A verification email has been sent to your email.',
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size.fromHeight(50),
+                    minimumSize: const Size.fromHeight(50),
                   ),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.email,
                     size: 35,
                   ),
-                  label: Text(
+                  label: const Text(
                     'Resent Email',
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: canResendEmail ? sendVerificationEmail : null,
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextButton(
                   style: ElevatedButton.styleFrom(
-                      minimumSize: Size.fromHeight(50)),
-                  child: Text(
+                      minimumSize: const Size.fromHeight(50)),
+                  child: const Text(
                     'Cancel',
                     style: TextStyle(fontSize: 20),
                   ),

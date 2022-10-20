@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loginlogout/home_page.dart';
-import 'package:loginlogout/login_page.dart';
+// import 'package:loginlogout/home_page.dart';
+// import 'package:loginlogout/login_page.dart';
 import 'package:loginlogout/verify_email_page.dart';
 
 import 'package:loginlogout/auth_page.dart';

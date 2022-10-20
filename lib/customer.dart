@@ -36,98 +36,101 @@ class _CustomerState extends State<Customer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: Text('Customer'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 30),
-        child: Column(
-          //padding: EdgeInsets.all(15),
-          children: <Widget>[
-            TextField(
-              controller: controllerName,
-              decoration: decorationTF('name'),
-            ),
-            const SizedBox(height: 25),
-            TextField(
-              controller: controllerAge,
-              decoration: decorationTF('Age'),
-              //use this for let user only choose Number
-              keyboardType: TextInputType.number,
-            ),
-            // const SizedBox(height: 25),
-            // DateTimeField(
-            //   controller: controllerDate,
-            //   decoration: decorationTF('Birthday'),
-            //   format: DateFormat('yyyy-MM-dd'),
-            //   //can use 2 way to select this line for call showDatePicker
-            //   // onShowPicker: (context, currentValue) => showDatePicker(
-            //   onShowPicker: (context, currentValue) {
-            //     return showDatePicker(
-            //       context: context,
-            //       firstDate: DateTime(1900),
-            //       initialDate: currentValue ?? DateTime.now(),
-            //       lastDate: DateTime(2100),
-            //     );
-            //   },
-            // ),
-            const SizedBox(height: 25),
-            ElevatedButton(
-              onPressed: () {
-                final userAddCustomer = AddCustomer(
-                  //get value from name TextField
-                  name: controllerName.text,
-                  //get int value to string
-                  age: int.parse(controllerAge.text),
-                  dateTime: DateTime.now(),
-                  //get date value to string
-                );
-                createUserAddCustomer(userAddCustomer);
-
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'เพิ่มรายชื่อลูกค้า',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 30),
+          child: Column(
+            //padding: EdgeInsets.all(15),
+            children: <Widget>[
+              TextField(
+                controller: controllerName,
+                decoration: decorationTF('name'),
               ),
-            ),
-            const SizedBox(height: 15),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'Back to HomePage',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+              const SizedBox(height: 25),
+              TextField(
+                controller: controllerAge,
+                decoration: decorationTF('Age'),
+                //use this for let user only choose Number
+                keyboardType: TextInputType.number,
               ),
-            ),
+              // const SizedBox(height: 25),
+              // DateTimeField(
+              //   controller: controllerDate,
+              //   decoration: decorationTF('Birthday'),
+              //   format: DateFormat('yyyy-MM-dd'),
+              //   //can use 2 way to select this line for call showDatePicker
+              //   // onShowPicker: (context, currentValue) => showDatePicker(
+              //   onShowPicker: (context, currentValue) {
+              //     return showDatePicker(
+              //       context: context,
+              //       firstDate: DateTime(1900),
+              //       initialDate: currentValue ?? DateTime.now(),
+              //       lastDate: DateTime(2100),
+              //     );
+              //   },
+              // ),
+              const SizedBox(height: 25),
+              ElevatedButton(
+                onPressed: () {
+                  final userAddCustomer = AddCustomer(
+                    //get value from name TextField
+                    name: controllerName.text,
+                    //get int value to string
+                    age: int.parse(controllerAge.text),
+                    dateTime: DateTime.now(),
+                    //get date value to string
+                  );
+                  createUserAddCustomer(userAddCustomer);
 
-            Flexible(
-              child: StreamBuilder<List<CustomerList>>(
-                stream: readCustomer(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text('Something went Wrong!!! ${snapshot.error}');
-                  } else if (snapshot.hasData) {
-                    final customer = snapshot.data!;
-
-                    return ListView(
-                      children: customer.map(buildUser).toList(),
-                    );
-                  } else {
-                    return const Center(child: CircularProgressIndicator());
-                  }
+                  Navigator.pop(context);
                 },
+                child: const Text(
+                  'เพิ่มรายชื่อลูกค้า',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'Back to HomePage',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+
+              Flexible(
+                child: StreamBuilder<List<CustomerList>>(
+                  stream: readCustomer(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Something went Wrong!!! ${snapshot.error}');
+                    } else if (snapshot.hasData) {
+                      final customer = snapshot.data!;
+
+                      return ListView(
+                        children: customer.map(buildUser).toList(),
+                      );
+                    } else {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
