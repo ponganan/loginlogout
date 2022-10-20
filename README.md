@@ -2,7 +2,7 @@
 
 A LoginLogout Flutter project.
 
-![alt text]https://postimg.cc/5HFJLvXr
+![alt text](https://postimg.cc/5HFJLvXr)
 
 ## Getting Started
 
